@@ -22,7 +22,7 @@ type entry struct {
 
 // New creates a new LRU with the provided capacity. If cap less than 1, then the LRU
 // grows indefinitely
-func New(opts ...option) *LRU {
+func New(opts ...Option) *LRU {
 	l := &LRU{}
 	for _, o := range opts {
 		o.apply(l)

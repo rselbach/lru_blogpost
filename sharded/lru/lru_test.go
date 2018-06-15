@@ -19,7 +19,7 @@ func TestEmptyValue(t *testing.T) {
 }
 
 func TestNewCap(t *testing.T) {
-	l := New(withCapacity(10))
+	l := New(WithCapacity(10))
 	for i := 0; i < 10; i++ {
 		l.Add(i, i)
 	}

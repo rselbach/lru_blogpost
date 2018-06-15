@@ -1,6 +1,7 @@
 package lru
 
-type option interface {
+// Option configures the LRU
+type Option interface {
 	apply(*LRU)
 }
 
@@ -10,13 +11,15 @@ func (f optionFn) apply(l *LRU) {
 	f(l)
 }
 
-func withCapacity(cap int) option {
+// WithCapacity configures the LRU to have a maximum capacity
+func WithCapacity(cap int) Option {
 	return optionFn(func(l *LRU) {
 		l.cap = cap
 	})
 }
 
-func withShards(n int) option {
+// WithShards configures the LRU to use the specified number of shards
+func WithShards(n int) Option {
 	return optionFn(func(l *LRU) {
 		l.nshards = n
 	})
